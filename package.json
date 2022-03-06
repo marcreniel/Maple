@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "npm run dev",
-    "dev": "vite --https",
+    "dev": "vite --port $PORT --https",
     "build": "vite build && npx workbox generateSW workbox-config.js",
     "postinstall": "cpy ./node_modules/framework7-icons/fonts/*.* ./src/fonts/ && cpy ./node_modules/material-icons/iconfont/*.* ./src/fonts/"
   },
