@@ -10,7 +10,7 @@ Framework7 app created with following options:
   "type": [
     "pwa"
   ],
-  "name": "Redleaf",
+  "name": "Maple",
   "framework": "react",
   "template": "blank",
   "bundler": "vite",

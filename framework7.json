@@ -3,7 +3,7 @@
   "type": [
     "pwa"
   ],
-  "name": "Redleaf",
+  "name": "Maple",
   "framework": "react",
   "template": "blank",
   "bundler": "vite",
