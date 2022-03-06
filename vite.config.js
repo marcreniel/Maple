@@ -29,7 +29,6 @@ export default {
   },
   server: {
     host: true,
-    https: true,
     proxy: {
       '/aspen/': {
         ws: true,
