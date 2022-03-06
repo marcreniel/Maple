@@ -1,0 +1,19 @@
+{
+  "cwd": "E:\\Repositories\\Redleaf",
+  "type": [
+    "pwa"
+  ],
+  "name": "Redleaf",
+  "framework": "react",
+  "template": "blank",
+  "bundler": "vite",
+  "cssPreProcessor": false,
+  "theming": {
+    "customColor": true,
+    "color": "#8e1934",
+    "darkTheme": true,
+    "iconFonts": true,
+    "fillBars": true
+  },
+  "customBuild": false
+}
