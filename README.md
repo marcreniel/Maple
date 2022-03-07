@@ -1,4 +1,4 @@
-# Mapse
+# Maple
 
 ## Framework7 CLI Options
 
