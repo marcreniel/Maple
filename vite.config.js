@@ -29,6 +29,7 @@ export default {
   },
   server: {
     host: true,
+    https: true,
     proxy: {
       '/aspen/': {
         changeOrigin: true,
@@ -37,8 +38,6 @@ export default {
         headers: {
           'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36'},
       }
-      }
     }
   }
-
 };
