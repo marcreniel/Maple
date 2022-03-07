@@ -31,19 +31,12 @@ export default {
     host: true,
     proxy: {
       '/aspen/': {
-        ws: true,
         changeOrigin: true,
         followRedirects: true,
         target: 'https://aspen.cps.edu/',
         headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET, POST',
-          'Connection': 'keep-alive',
-          'Pragma': 'no-cache',
-          'Cache-Control': 'no-cache',
-          'Upgrade-Insecure-Requests': '1',
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36',
-      },
+          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36'},
+      }
       }
     }
   }
