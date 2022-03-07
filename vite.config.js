@@ -32,6 +32,7 @@ export default {
     proxy: {
       '/aspen/': {
         ws: true,
+        changeOrigin: true,
         followRedirects: true,
         target: 'https://aspen.cps.edu/',
         headers: {
