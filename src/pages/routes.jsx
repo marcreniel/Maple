@@ -2,17 +2,18 @@ import React from 'react';
 import {
   Page,
   Views,
-  View,
-  Link,
   Toolbar,
+  Link,
+  View,
 } from 'framework7-react';
+export default () => {
 
-const TobRouter = () => (
-  <Page name="home">
+return(
+  <Page pageContent={false}>
       {/* Views/Tabs container */}
-    <Views tabs className="safe-areas">
+    <Views tabs>
       {/* Tabbar for switching views-tabs */}
-      <Toolbar tabbar labels bottom >
+      <Toolbar tabbar labels bottom>
         <Link tabLink="#view-home" tabLinkActive iconIos="f7:house_fill" iconAurora="f7:house_fill" iconMd="material:home" text="Home" />
         <Link tabLink="#view-aspen" iconIos="f7:square_list_fill" iconAurora="f7:square_list_fill" iconMd="material:view_list" text="Aspen" />
         <Link tabLink="#view-settings" iconIos="f7:gear" iconAurora="f7:gear" iconMd="material:settings" text="Settings" />
@@ -29,4 +30,4 @@ const TobRouter = () => (
     </Views>
   </Page>
 );
-export default TobRouter;
+};
