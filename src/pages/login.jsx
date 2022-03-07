@@ -27,7 +27,6 @@ export default ({ f7router }) => {
         try {
           const getResponse = await axios({method: 'get', url: '/aspen/logon.do', withCredentials: true});
           const token = await getResponse.data.match(/name="org.apache.struts.taglib.html.TOKEN" value="(.*?)"/)[1]
-
           const logonForm = new FormData();
           logonForm.append('org.apache.struts.taglib.html.TOKEN', token);
           logonForm.append('userEvent', 930);
@@ -43,7 +42,7 @@ export default ({ f7router }) => {
           } else {
             await AsyncStorage.setItem('username', username);
             await AsyncStorage.setItem('password', password);
-            f7router.navigate('/home/');
+            f7router.navigate('/routes/');
           }
 
         } catch (ex) {

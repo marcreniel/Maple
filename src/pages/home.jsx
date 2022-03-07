@@ -2,13 +2,15 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Barcode from 'react-barcode';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import cheerio, { Cheerio } from 'cheerio';
+import cheerio from 'cheerio';
 import {
   Page,
   Navbar,
   NavLeft,
   NavTitle,
   NavTitleLarge,
+  View,
+  Views,
   NavRight,
   Link,
   Toolbar,
@@ -16,9 +18,6 @@ import {
   BlockTitle,
   List,
   ListItem,
-  Row,
-  Col,
-  Button,
   Card,
   CardContent,
   CardFooter,
@@ -27,7 +26,7 @@ import {
   f7,
   BlockFooter,
 } from 'framework7-react';
-export default () => {
+export default ({ f7router }) => {
     const [profile, setProfile] = useState('');
     const [popupOpened, setPopupOpened] = useState(false);
 
@@ -69,7 +68,7 @@ export default () => {
     };
     console.log(profile);
     return(
-        <Page name="home">
+        <Page>
             {/* Virtual ID */}
             <Popup
                 className="vid"
