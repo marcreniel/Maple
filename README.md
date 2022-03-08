@@ -1,5 +1,7 @@
 # Maple
 ### This project is a work in progess. Expect many bugs and glitches.
+#### View the test app @ https://mapletest.herokuapp.com
+
 An all-in-one webapp for CPS students. Check your grades, attendance, bus times, and more. Built on Framework7 + React.
 
 ## Prerequisites
