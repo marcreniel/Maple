@@ -3,6 +3,12 @@
 #### View the test app @ https://mapletest.herokuapp.com
 
 An all-in-one webapp for CPS students. Check your grades, attendance, bus times, and more. Built on Framework7 + React.
+#### Features (tentative)
+- Virtual ID system w/ scannable barcode
+- Full Aspen Integration, which allows the ability to check
+  - Grades, schedule, attendance, recent assignments, transcript, & more.
+- Check CTA bus times 
+- Access to school/CPS annoucements
 
 ## Prerequisites
 - Node.js w/ npm 
