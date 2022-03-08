@@ -23,9 +23,11 @@ Then, install the required dependencies.
 ```
 npm install
 ```
-For running locally, make sure to add ``server.https`` in ``vite.config.js``
+
+### HTTPS/SSL is required for proper REST requests to Aspen.
+For running locally, make sure to add ``server.https`` in ``vite.config.js``, or provide your own SSL/HTTPS certificate.
 </br>
-For running on the cloud (Heroku, Azure, DigitalOcean, etc.), leave the config as is. 
+For running on the cloud (Heroku, Azure, DigitalOcean, etc.), leave the config as is. Most likely, they will provide one for you.
 </br>
 
 ## NPM Scripts
