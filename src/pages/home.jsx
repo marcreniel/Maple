@@ -1,19 +1,15 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Barcode from 'react-barcode';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import cheerio from 'cheerio';
 import {
   Page,
   Navbar,
-  NavLeft,
   NavTitle,
   NavTitleLarge,
-  View,
-  Views,
   NavRight,
   Link,
-  Toolbar,
   Block,
   BlockTitle,
   List,
@@ -32,10 +28,10 @@ export default ({ f7router }) => {
 
     useEffect(async () => {
         try {
-            let username = await AsyncStorage.getItem('username');
-            let password = await AsyncStorage.getItem('password');
+        //  let username = await AsyncStorage.getItem('username');
+        //  let password = await AsyncStorage.getItem('password');
                 try { 
-                    await loadProfile(username, password);
+                    loadProfile();                
                 } catch(ex) {
                 f7.dialog.alert(`Data refresh failed. Try restarting the application.`);
                 }
@@ -44,11 +40,11 @@ export default ({ f7router }) => {
             f7.dialog.alert(`Data refresh failed. Try restarting the application.`);
         }
     }, []);
-    const loadProfile = async (username, password) => {
-        const response = await axios({method: 'get', headers: { "Content-Type": 'application/json' }, url: '/aspen/portalStudentDetail.do?navkey=myInfo.details.detail'});
-        const profileToken = await response.data.match(/name="org.apache.struts.taglib.html.TOKEN" value="(.*?)"/)[1]
+    const loadProfile = async (/* username, password */) => {
+        const profileRequest = await axios({method: 'get', headers: { "Content-Type": 'application/json' }, url: '/aspen/portalStudentDetail.do?navkey=myInfo.details.detail'});
+        const profileToken = await profileRequest.data.match(/name="org.apache.struts.taglib.html.TOKEN" value="(.*?)"/)[1]
 
-        let $ = cheerio.load(response.data);
+        let $ = cheerio.load(profileRequest.data);
         let profileData = {firstname: '', lastname: '', school: '', grade: ''}
         profileData.name = $('span[id="propertyValue(relStdPsnOid_psnNameFirst)-span"]').text() + ' ' + $('span[id="propertyValue(relStdPsnOid_psnNameLast)-span"]').text();
         profileData.school = $('span[id="propertyValue(relStdSklOid_sklSchoolName)-span"]').text();
@@ -60,13 +56,12 @@ export default ({ f7router }) => {
         profileForm.append('userParam', 3);
         profileForm.append('deploymentId', 'aspen');
         profileForm.append('org.apache.struts.taglib.html.TOKEN', profileToken);
-        const postStatus = await axios({method: 'post', url: '/aspen/portalStudentDetail.do', data: profileForm, withCredentials: true});
-        $ = cheerio.load(postStatus.data);
+        const photoRequest = await axios({method: 'post', url: '/aspen/portalStudentDetail.do', data: profileForm, withCredentials: true});
+        $ = cheerio.load(photoRequest.data);
         profileData.photo = '/aspen/' + $('span[id="propertyValue(relStdPsnOid_psnPhoOIDPrim)-span"] > img').attr('src');
 
         setProfile(profileData);
     };
-    console.log(profile);
     return(
         <Page>
             {/* Virtual ID */}

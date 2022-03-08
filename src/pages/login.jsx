@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   Page, 
   ListInput, 
@@ -25,23 +25,23 @@ export default ({ f7router }) => {
   const signIn = async () => {
     if (username !== '' && password !== '') {
         try {
-          const getResponse = await axios({method: 'get', url: '/aspen/logon.do', withCredentials: true});
-          const token = await getResponse.data.match(/name="org.apache.struts.taglib.html.TOKEN" value="(.*?)"/)[1]
-          const logonForm = new FormData();
-          logonForm.append('org.apache.struts.taglib.html.TOKEN', token);
-          logonForm.append('userEvent', 930);
-          logonForm.append('deploymentId', 'aspen');
-          logonForm.append('mobile', 'false');
-          logonForm.append('username', username);
-          logonForm.append('password', password);
+          const loginRequest = await axios({method: 'get', url: '/aspen/logon.do', withCredentials: true});
+          const token = await loginRequest.data.match(/name="org.apache.struts.taglib.html.TOKEN" value="(.*?)"/)[1]
+          const loginForm = new FormData();
+          loginForm.append('org.apache.struts.taglib.html.TOKEN', token);
+          loginForm.append('userEvent', 930);
+          loginForm.append('deploymentId', 'aspen');
+          loginForm.append('mobile', 'false');
+          loginForm.append('username', username);
+          loginForm.append('password', password);
 
-          await axios({method: 'post', url: '/aspen/logon.do', data: logonForm, withCredentials: true}).then((response) => {console.log(response.status)}).catch((error) => {if(error.response){console.log(error.response.data)}});
+          await axios({method: 'post', url: '/aspen/logon.do', data: loginForm, withCredentials: true}).then((response) => {console.log(response.status)}).catch((error) => {if(error.response){console.log(error.response.data)}});
           const loginStatus = await axios({method: 'get', url: '/aspen/home.do'});
           if (loginStatus.status != 200) {
             f7.dialog.alert(`Failed to login - Check your username or password.`);
           } else {
-            await AsyncStorage.setItem('username', username);
-            await AsyncStorage.setItem('password', password);
+            // await AsyncStorage.setItem('username', username);
+            // await AsyncStorage.setItem('password', password);
             f7router.navigate('/routes/');
           }
 
