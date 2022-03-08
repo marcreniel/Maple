@@ -10,6 +10,9 @@ An all-in-one webapp for CPS students. Check your grades, attendance, bus times,
 - Check CTA bus times 
 - Access to school/CPS annoucements
 
+#### Known Issues
+- App does not work on CPS-issued Chromebooks or the CPS network due to the unique way the app makes requests to Aspen.
+
 ## Prerequisites
 - Node.js w/ npm 
 
