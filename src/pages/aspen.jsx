@@ -23,7 +23,7 @@ export default () => {
                 try { 
                 /*  Do not know if there is a better fix, not giving timeout will 
                 cause loadProfile errors in home.jsx due to HTTP request overlap */
-                    setTimeout(loadClasses, 500);
+                    setTimeout(loadClasses, 1000);
                 } catch(ex) {
                 f7.dialog.alert(`Data refresh failed. Try restarting the application.`);
                 }
