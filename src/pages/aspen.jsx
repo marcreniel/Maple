@@ -43,7 +43,6 @@ export default () => {
               room: "Room" + $($(element).find($('td'))[6]).text(),
               grade: $($(element).find($('td'))[7]).text()
             });
-            console.log(classList);
             let mappedClasses = classList.map((element, index) => (
                 <ListItem
                 mediaList
