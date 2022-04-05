@@ -40,22 +40,24 @@ export default () => {
             classList.push({
               name: $($(element).find($('td'))[1]).text(),
               teacher: $($(element).find($('td'))[2]).text(),
-              avg: $($(element).find($('td'))[6]).text(),
-              code: $($(element).find($('td'))[1]).attr('id'),
+              room: "Room" + $($(element).find($('td'))[6]).text(),
+              grade: $($(element).find($('td'))[7]).text()
             });
+            console.log(classList);
             let mappedClasses = classList.map((element, index) => (
                 <ListItem
+                mediaList
                 key={index}
-                mediaItem
-                link="#"
+                header={element.teacher}
                 title={element.name}
-                subtitle={element.teacher}
+                subtitle={element.room}
+                badge={element.grade}
                 />
             ));
             setClasses(mappedClasses);
           });
     };
-
+    
     return(
         <Page name="aspen">
             <Navbar large sliding={false}>
