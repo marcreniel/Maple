@@ -5,26 +5,12 @@ import cheerio from 'cheerio';
 import {
   Page,
   Navbar,
-  NavLeft,
-  NavTitle,
   NavTitleLarge,
-  NavRight,
-  Link,
-  Toolbar,
-  Block,
-  BlockTitle,
   List,
   ListItem,
-  Row,
-  Col,
-  Button,
-  Card,
-  CardContent,
-  CardFooter,
-  Icon,
-  Popup,
   f7,
-  BlockFooter,
+  Subnavbar,
+  Searchbar
 } from 'framework7-react';
 export default () => {
     const [classes, setClasses] = useState([]);
@@ -60,12 +46,31 @@ export default () => {
             setClasses(classList);
           });
     };
+
     return(
         <Page name="aspen">
             <Navbar large sliding={false}>
             <NavTitleLarge>Aspen</NavTitleLarge>
+            <Subnavbar inner={false}>
+                <Searchbar
+                    searchContainer=".list"
+                    searchItem="li"
+                    searchIn=".item-title"
+                />
+            </Subnavbar>
             </Navbar>
             <List>
+                <ul>
+                    {classes.map((element, index) => (
+                        <ListItem
+                        key={index}
+                        mediaItem
+                        link="#"
+                        title={element.name}
+                        subtitle={element.teacher}
+                        />
+                    ))}
+                </ul>
             </List>
         </Page>
 );
