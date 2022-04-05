@@ -43,7 +43,16 @@ export default () => {
               avg: $($(element).find($('td'))[6]).text(),
               code: $($(element).find($('td'))[1]).attr('id'),
             });
-            setClasses(classList);
+            let mappedClasses = classList.map((element, index) => (
+                <ListItem
+                key={index}
+                mediaItem
+                link="#"
+                title={element.name}
+                subtitle={element.teacher}
+                />
+            ));
+            setClasses(mappedClasses);
           });
     };
 
@@ -61,15 +70,7 @@ export default () => {
             </Navbar>
             <List>
                 <ul>
-                    {classes.map((element, index) => (
-                        <ListItem
-                        key={index}
-                        mediaItem
-                        link="#"
-                        title={element.name}
-                        subtitle={element.teacher}
-                        />
-                    ))}
+                    {classes}
                 </ul>
             </List>
         </Page>
