@@ -10,6 +10,9 @@ An all-in-one webapp for CPS students. Check your grades, attendance, bus times,
 - Check CTA bus times 
 - Access to school/CPS annoucements
 
+#### Known Issues
+- App does not work on CPS-issued Chromebooks or the CPS network due to the unique way the app makes requests to Aspen. Unfortunately, this cannot be fixed as this is an issue with the CPS network.
+
 ## Prerequisites
 - Node.js w/ npm 
 
@@ -23,9 +26,11 @@ Then, install the required dependencies.
 ```
 npm install
 ```
-For running locally, make sure to add ``server.https`` in ``vite.config.js``
+
+### HTTPS/SSL is required for proper REST requests to Aspen.
+For running locally, make sure to add ``server.https`` in ``vite.config.js``, or provide your own SSL/HTTPS certificate.
 </br>
-For running on the cloud (Heroku, Azure, DigitalOcean, etc.), leave the config as is. 
+For running on the cloud (Heroku, Azure, DigitalOcean, etc.), leave the config as is. Most likely, they will provide one for you.
 </br>
 
 ## NPM Scripts
