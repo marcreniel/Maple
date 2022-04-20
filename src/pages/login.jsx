@@ -23,6 +23,7 @@ export default ({ f7router }) => {
   const [popupOpened, setPopupOpened] = useState(false);
 
   const signIn = async () => {
+    f7.dialog.preloader();
     if (username !== '' && password !== '') {
         try {
           const loginRequest = await axios({method: 'get', url: '/aspen/logon.do', withCredentials: true});
@@ -34,7 +35,7 @@ export default ({ f7router }) => {
           loginForm.append('mobile', 'false');
           loginForm.append('username', username);
           loginForm.append('password', password);
-
+          f7.dialog.close();
           await axios({method: 'post', url: '/aspen/logon.do', data: loginForm, withCredentials: true}).then((response) => {console.log(response.status)}).catch((error) => {if(error.response){console.log(error.response.data)}});
           const loginStatus = await axios({method: 'get', url: '/aspen/home.do'});
           if (loginStatus.status != 200) {
@@ -58,9 +59,9 @@ export default ({ f7router }) => {
 
   return (
     <Page noToolbar noNavbar noSwipeback loginScreen>
-      {/* Virtual ID */}
+      {/* Privacy Policy */}
     <Popup
-      className="vid"
+      className="pp"
       opened={popupOpened}
       onPopupClosed={() => setPopupOpened(false)}
     >

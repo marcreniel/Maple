@@ -24,6 +24,7 @@ import {
 } from 'framework7-react';
 export default ({ f7router }) => {
     const [profile, setProfile] = useState('');
+    const [recent, setRecent] = useState([]);
     const [popupOpened, setPopupOpened] = useState(false);
 
     useEffect(async () => {
@@ -31,7 +32,7 @@ export default ({ f7router }) => {
         //  let username = await AsyncStorage.getItem('username');
         //  let password = await AsyncStorage.getItem('password');
                 try { 
-                    loadProfile();                
+                    loadProfile();            
                 } catch(ex) {
                 f7.dialog.alert(`Data refresh failed. Try restarting the application.`);
                 }
@@ -61,7 +62,23 @@ export default ({ f7router }) => {
         profileData.photo = '/aspen/' + $('span[id="propertyValue(relStdPsnOid_psnPhoOIDPrim)-span"] > img').attr('src');
 
         setProfile(profileData);
+        loadRecent();
+    }; 
+    
+    const loadRecent = async () => {
+        const recentList = [];
+        const getRecentList = await axios({method: 'get', headers: { "Content-Type": 'application/xml' }, url: '/aspen/studentRecentActivityWidget.do?preferences=%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%3Cpreference-set%3E%0A%20%20%3Cpref%20id%3D%22dateRange%22%20type%3D%22int%22%3E4%3C%2Fpref%3E%0A%3C%2Fpreference-set%3E'});
+        console.log(getRecentList);
+        const $ = cheerio.load(getRecentList.data, { xmlMode: true });
+        $('recent-activity').children().each((index, element) => {
+            recentList.push({
+                type: element['name'],          
+                attributes: element['grade']
+            });
+            setRecent(recent);
+          });
     };
+
     return(
         <Page>
             {/* Virtual ID */}
@@ -70,7 +87,7 @@ export default ({ f7router }) => {
                 opened={popupOpened}
                 onPopupClosed={() => setPopupOpened(false)}
             >
-                <Page>
+                <Page noSwipeback>
                     <Navbar title="Virtual ID">
                         <NavRight>
                             <Link popupClose>Close</Link>

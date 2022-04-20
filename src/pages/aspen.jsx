@@ -58,7 +58,7 @@ export default () => {
     };
     
     return(
-        <Page name="aspen">
+        <Page name="aspen" noSwipeback>
             <Navbar large sliding={false}>
             <NavTitleLarge>Aspen</NavTitleLarge>
             <Subnavbar inner={false}>
