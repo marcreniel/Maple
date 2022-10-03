@@ -31,9 +31,6 @@ export default {
   server: {
     host: true,
     https: true,
-    hmr: {
-      protocol: 'wss',
-    },
     proxy: {
       '/aspen/': {
         changeOrigin: true,
