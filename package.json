@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "npm run dev",
-    "dev": "cross-env NODE_ENV=development vite",
+    "dev": "cross-env NODE_ENV=development vite --port $443",
     "build": "cross-env NODE_ENV=development vite build && npx workbox generateSW workbox-config.js",
     "postinstall": "cpy ./node_modules/framework7-icons/fonts/*.* ./src/fonts/ && cpy ./node_modules/material-icons/iconfont/*.* ./src/fonts/"
   },
