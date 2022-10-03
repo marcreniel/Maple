@@ -33,6 +33,7 @@ export default {
     https: true,
     hmr: {
       protocol: 'wss',
+      host: 'localhost'
     },
     proxy: {
       '/aspen/': {
