@@ -33,7 +33,6 @@ export default {
     https: true,
     hmr: {
       protocol: 'wss',
-      clientPort: 443,
     },
     proxy: {
       '/aspen/': {
