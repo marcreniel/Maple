@@ -31,9 +31,6 @@ export default {
   server: {
     host: true,
     https: true,
-    hmr: {
-      port: 443,
-    },
     proxy: {
       '/aspen/': {
         changeOrigin: true,
