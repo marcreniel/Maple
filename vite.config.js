@@ -33,7 +33,6 @@ export default {
     hmr: {
       protocol: 'wss',
       clientPort: 443,
-      host: 'localhost'
     },
     proxy: {
       '/aspen/': {
