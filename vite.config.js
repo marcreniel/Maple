@@ -31,6 +31,11 @@ export default {
   server: {
     host: true,
     https: true,
+    hmr: {
+      protocol: 'wss',
+      host: 'maple.notmarc.me',
+      clientPort: 443
+    },
     proxy: {
       '/aspen/': {
         changeOrigin: true,
