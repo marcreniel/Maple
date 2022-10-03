@@ -30,9 +30,9 @@ export default {
   },
   server: {
     host: true,
-    https: true,
     hmr: {
       protocol: 'wss',
+      clientPort: 443,
       host: 'localhost'
     },
     proxy: {
